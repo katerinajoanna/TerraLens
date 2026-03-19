@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "continent": "Europe",
+        "title": "Paris",
+        "country": "France",
+        "category": "city",
+        "description": "Beautiful city",
+        "image": "url_to_image",
+        "linkInfo": "https://example.com",
+        "location": {
+            "lat": 48.8566,
+            "lng": 2.3522
+        }
+    }
+]
