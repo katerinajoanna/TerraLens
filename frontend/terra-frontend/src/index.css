@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+@import "@fontsource/roboto-serif";
+@import "@fontsource/roboto-flex";
+
 @layer base {
     * {
         box-sizing: border-box;

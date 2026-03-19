@@ -3,9 +3,9 @@ function App() {
 
 
   return (
-    <div className='bg-amber-400 min-h-screen'>
-      <h1 className='text-3xl text-center font-bold text-red-700 p-25'>
-        Czy stronka dziala?
+    <div className='bg-blue-900 min-h-screen'>
+      <h1 className='text-4xl text-center font-bold text-yellow-600 p-25'>
+        TERRA LENS
       </h1>
     </div>
   )
