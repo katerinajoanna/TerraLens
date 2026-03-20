@@ -1,31 +1,36 @@
 import express from "express";
-import fs from "fs";
+import cors from "cors";
 import path from "path";
-import { fileURLToPath } from "url";
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import fs from "fs/promises";
+import { __dirname } from "./utils/path.js";
 
 
 const app = express();
+const PORT = 5000;
 
-//  middleware
+app.use(cors());
 app.use(express.json());
 
 //  endpoint /places
-app.get("/places", (req, res) => {
-    const filePath = path.resolve(__dirname, "data/places.json");
-    const data = fs.readFileSync(filePath, "utf-8");
-    res.json(JSON.parse(data));
+app.get("/places", async (req, res) => {
+    try {
+        // Składam ścieżkę: wychodzisz z utils (..), wchodzisz do data
+        const filePath = path.join(__dirname, "..", "data/places.json");
+        const data = await fs.readFile(filePath, "utf-8");
+
+        res.json(JSON.parse(data));
+    } catch (error) {
+        console.error("Blad pliku:", error);
+        res.status(500).send("Blad odczytu danych");
+    }
 });
 
 //  endpoint testowy "/"
 app.get("/", (req, res) => {
-    res.send("działa");
+    res.send("Serwer smiga!!!");
 });
 
 // start serwera
-app.listen(3000, () => {
-    console.log("Server działa na http://localhost:3000");
+app.listen(PORT, () => {
+    console.log(`Server działa na porcie ${PORT}`);
 });
